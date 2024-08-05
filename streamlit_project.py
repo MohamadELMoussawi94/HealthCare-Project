@@ -57,39 +57,20 @@ elif page == "Graphs":
         fig = px.bar(filtered_df, x=bar_x, y=bar_y, color='Location', barmode='group')
         st.plotly_chart(fig)
 
-    col3, col4 = st.columns(2)
 
-    with col3:
-        st.subheader("Scatter Plot")
-        colx, coly = st.columns(2)
-        with colx:
-            scatter_x = st.selectbox("Select X-axis variable for scatter plot", options=selectable_columns, key = 'x1')
-        with coly: 
-            scatter_y = st.selectbox("Select Y-axis variable for scatter plot", options=selectable_columns, key = 'y1')
-        size_column = st.selectbox("Select size variable", options=selectable_columns)
-        filtered_df[size_column] = filtered_df[size_column].fillna(0)
-        fig = px.scatter(filtered_df, 
-                         x=scatter_x, 
-                         y=scatter_y, 
-                         color='Location', 
-                         size=size_column,
-                         size_max=8)
-        st.plotly_chart(fig)
-
-    with col4:
-        st.subheader("Scatter Plot with Trendline")
-        trend_x = st.selectbox("Select X-axis variable for trendline plot", options=selectable_columns, key = 'x2')
-        trend_y = st.selectbox("Select Y-axis variable for trendline plot", options=selectable_columns, key = 'y2')
-        fig = px.scatter(filtered_df, 
-                         x=trend_x,
-                         y=trend_y,
-                         color='Location', 
-                         size='Period', 
-                         hover_name='Location',
-                         size_max=8,
-                         trendline="ols")
-        fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
-        st.plotly_chart(fig)
+    st.subheader("Scatter Plot with Trendline")
+    trend_x = st.selectbox("Select X-axis variable for trendline plot", options=selectable_columns, key = 'x2')
+    trend_y = st.selectbox("Select Y-axis variable for trendline plot", options=selectable_columns, key = 'y2')
+    fig = px.scatter(filtered_df, 
+                     x=trend_x,
+                     y=trend_y,
+                     color='Location', 
+                     size='Period', 
+                     hover_name='Location',
+                     size_max=8,
+                     trendline="ols")
+    fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
+    st.plotly_chart(fig)
 
 
     # Choropleth map
