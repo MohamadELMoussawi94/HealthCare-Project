@@ -12,6 +12,10 @@ faiss-cpu==1.8.0
 tiktoken==0.7.0
 python-dotenv==1.0.1
 pycountry==24.6.1
+statsmodels==0.14.2
+
+
+
 
 
 
