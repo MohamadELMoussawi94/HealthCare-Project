@@ -6,13 +6,13 @@ import joblib
 st.set_page_config(page_title="Healthcare Data Visualization", layout="wide")
 
 if 'data_loaded' not in st.session_state or st.session_state.data_loaded == False:
-    st.session_state.df = pd.read_csv(r"C:\Users\Mhammad\Desktop\Moussawi\Healthcare\Project\Cleaned.csv")
+    st.session_state.df = pd.read_csv(r"Cleaned.csv")
     
     cols = list(st.session_state.df.columns)
     cols.insert(0, cols.pop(cols.index('Under-five mortality rate (probability of dying by age 5 per 1000 live births)')))
     st.session_state.df = st.session_state.df[cols]
     
-    st.session_state.model = joblib.load(r"C:\Users\Mhammad\Desktop\Moussawi\Healthcare\Project\rfr_healthcare.joblib")
+    st.session_state.model = joblib.load(r"rfr_healthcare.joblib")
 
     
 df = st.session_state.df
