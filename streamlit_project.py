@@ -85,11 +85,6 @@ elif page == "Graphs":
         fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
         st.plotly_chart(fig)
 
-    # Display raw data
-    if st.checkbox("Show Raw Data"):
-        st.subheader("Raw Data")
-        st.dataframe(filtered_df)
-        st.dataframe(df)
 
     map = px.choropleth(data_frame=df, 
                         locations='iso',
