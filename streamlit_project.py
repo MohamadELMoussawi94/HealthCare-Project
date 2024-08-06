@@ -47,15 +47,13 @@ elif page == "Graphs":
         fig = px.line(filtered_df, x='Period', y=y_column, color='Location')
         st.plotly_chart(fig)
 
+   
     with col2:
-        st.subheader("Bar Plot")
-        colx, coly = st.columns(2)
-        with colx:
-            bar_x = st.selectbox("Select X-axis variable", options=selectable_columns, key = 'x')
-        with coly:
-            bar_y = st.selectbox("Select Y-axis variable", options=selectable_columns, key = 'y')
-        fig = px.bar(filtered_df, x=bar_x, y=bar_y, color='Location', barmode='group')
+        st.subheader("Box Plot")
+        box_x = st.selectbox("Select variable for boxplot", options=selectable_columns, key='box')
+        fig = px.box(filtered_df, x=box_x, color='Location')
         st.plotly_chart(fig)
+
 
 
     st.subheader("Scatter Plot with Trendline")
